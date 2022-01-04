@@ -1,3 +1,5 @@
+var board;
+var boardArray;
 var slots;
 var col1;
 var col1AvailableSlot;
@@ -18,7 +20,7 @@ var turn;
 window.onload = init;
 
 function init() {
-  var board = [
+  var boardArray = [
     [0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0],
@@ -26,6 +28,7 @@ function init() {
     [0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0]
   ]
+  board = document.getElementById('board');
   slots = document.getElementsByClassName('slot');
   col1 = document.getElementsByClassName('col1');
   col2 = document.getElementsByClassName('col2');
@@ -43,44 +46,48 @@ function init() {
   col7AvailableSlot = 41;
   turn = 'player1';
 
+  // for(var i = 0, row; row = table.rows[i]; i++) {
+
+  // }
+
   for(var i = 0; i < col1.length; i++) {
-    col1[i].children[0].onclick = function() {
+    col1[i].onclick = function() {
         move('col1');
     }
   }
 
   for(var i = 0; i < col2.length; i++) {
-    col2[i].children[0].onclick = function() {
+    col2[i].onclick = function() {
         move('col2');
     }
   }
 
   for(var i = 0; i < col3.length; i++) {
-    col3[i].children[0].onclick = function() {
+    col3[i].onclick = function() {
         move('col3');
     }
   }
 
   for(var i = 0; i < col4.length; i++) {
-    col4[i].children[0].onclick = function() {
+    col4[i].onclick = function() {
         move('col4');
     }
   }
 
   for(var i = 0; i < col5.length; i++) {
-    col5[i].children[0].onclick = function() {
+    col5[i].onclick = function() {
         move('col5');
     }
   }
 
   for(var i = 0; i < col6.length; i++) {
-    col6[i].children[0].onclick = function() {
+    col6[i].onclick = function() {
         move('col6');
     }
   }
 
   for(var i = 0; i < col7.length; i++) {
-    col7[i].children[0].onclick = function() {
+    col7[i].onclick = function() {
         move('col7');
     }
   }
