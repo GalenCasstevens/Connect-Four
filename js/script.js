@@ -20,14 +20,14 @@ var turn;
 window.onload = init;
 
 function init() {
-  var boardArray = [
+  boardArray = [
     [0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0]
-  ]
+  ];
   board = document.getElementById('board');
   slots = document.getElementsByClassName('slot');
   col1 = document.getElementsByClassName('col1');
@@ -46,80 +46,91 @@ function init() {
   col7AvailableSlot = 41;
   turn = 'player1';
 
-  // for(var i = 0, row; row = table.rows[i]; i++) {
+  for (var i = 0, slot; slot = board.cells[i]; i++) {
+    //iterate through slots
+    //slots would be accessed using the "slot" variable assigned in the for loop
+    var slotClass = slot.className;
 
-  // }
-
-  for(var i = 0; i < col1.length; i++) {
-    col1[i].onclick = function() {
-        move('col1');
+    switch (slotClass) {
+      case 'col1':
+        slot.onclick = () => move(slot);
+        break;
+      case 'col2':
+        slot.onclick = () => move(slot);
+        break;
     }
   }
 
-  for(var i = 0; i < col2.length; i++) {
-    col2[i].onclick = function() {
-        move('col2');
+  for (var i = 0; i < col1.length; i++) {
+    col1[i].onclick = function () {
+      move('col1');
     }
   }
 
-  for(var i = 0; i < col3.length; i++) {
-    col3[i].onclick = function() {
-        move('col3');
+  for (var i = 0; i < col2.length; i++) {
+    col2[i].onclick = function () {
+      move('col2');
     }
   }
 
-  for(var i = 0; i < col4.length; i++) {
-    col4[i].onclick = function() {
-        move('col4');
+  for (var i = 0; i < col3.length; i++) {
+    col3[i].onclick = function () {
+      move('col3');
     }
   }
 
-  for(var i = 0; i < col5.length; i++) {
-    col5[i].onclick = function() {
-        move('col5');
+  for (var i = 0; i < col4.length; i++) {
+    col4[i].onclick = function () {
+      move('col4');
     }
   }
 
-  for(var i = 0; i < col6.length; i++) {
-    col6[i].onclick = function() {
-        move('col6');
+  for (var i = 0; i < col5.length; i++) {
+    col5[i].onclick = function () {
+      move('col5');
     }
   }
 
-  for(var i = 0; i < col7.length; i++) {
-    col7[i].onclick = function() {
-        move('col7');
+  for (var i = 0; i < col6.length; i++) {
+    col6[i].onclick = function () {
+      move('col6');
     }
   }
-/*
-  for(var i = 0; i < col2.length; i++) {
-    col2[i].children[0].onclick = function() {
-        move('col2');
+
+  for (var i = 0; i < col7.length; i++) {
+    col7[i].onclick = function () {
+      move('col7');
     }
   }
-*/
+  /*
+    for(var i = 0; i < col2.length; i++) {
+      col2[i].children[0].onclick = function() {
+          move('col2');
+      }
+    }
+  */
   function move(column) {
-    if(column === 'col1' && col1AvailableSlot >= 0) {
+    if (column === 'col1' && col1AvailableSlot >= 0) {
       col1Move();
-    } else if(column === 'col2' && col2AvailableSlot >= 1) {
+    } else if (column === 'col2' && col2AvailableSlot >= 1) {
       col2Move();
-    } else if(column === 'col3' && col3AvailableSlot >= 2) {
+    } else if (column === 'col3' && col3AvailableSlot >= 2) {
       col3Move();
-    } else if(column === 'col4' && col4AvailableSlot >= 3) {
+    } else if (column === 'col4' && col4AvailableSlot >= 3) {
       col4Move();
-    } else if(column === 'col5' && col5AvailableSlot >= 4) {
+    } else if (column === 'col5' && col5AvailableSlot >= 4) {
       col5Move();
-    } else if(column === 'col6' && col6AvailableSlot >= 5) {
+    } else if (column === 'col6' && col6AvailableSlot >= 5) {
       col6Move();
-    } else if(column === 'col7' && col7AvailableSlot >= 6) {
+    } else if (column === 'col7' && col7AvailableSlot >= 6) {
       col7Move();
     }
   }
 
   function col1Move() {
-    if(turn === 'player1') {
+    if (turn === 'player1') {
       slots[col1AvailableSlot].classList.add('player1');
-    } else if(turn === 'player2') {
+    } else if (turn === 'player2') {
       slots[col1AvailableSlot].classList.add('player2');
     }
     col1AvailableSlot -= 7;
@@ -127,9 +138,9 @@ function init() {
   }
 
   function col2Move() {
-    if(turn === 'player1') {
+    if (turn === 'player1') {
       slots[col2AvailableSlot].classList.add('player1');
-    } else if(turn === 'player2') {
+    } else if (turn === 'player2') {
       slots[col2AvailableSlot].classList.add('player2');
     }
     col2AvailableSlot -= 7;
@@ -137,9 +148,9 @@ function init() {
   }
 
   function col3Move() {
-    if(turn === 'player1') {
+    if (turn === 'player1') {
       slots[col3AvailableSlot].classList.add('player1');
-    } else if(turn === 'player2') {
+    } else if (turn === 'player2') {
       slots[col3AvailableSlot].classList.add('player2');
     }
     col3AvailableSlot -= 7;
@@ -147,9 +158,9 @@ function init() {
   }
 
   function col4Move() {
-    if(turn === 'player1') {
+    if (turn === 'player1') {
       slots[col4AvailableSlot].classList.add('player1');
-    } else if(turn === 'player2') {
+    } else if (turn === 'player2') {
       slots[col4AvailableSlot].classList.add('player2');
     }
     col4AvailableSlot -= 7;
@@ -157,9 +168,9 @@ function init() {
   }
 
   function col5Move() {
-    if(turn === 'player1') {
+    if (turn === 'player1') {
       slots[col5AvailableSlot].classList.add('player1');
-    } else if(turn === 'player2') {
+    } else if (turn === 'player2') {
       slots[col5AvailableSlot].classList.add('player2');
     }
     col5AvailableSlot -= 7;
@@ -167,9 +178,9 @@ function init() {
   }
 
   function col6Move() {
-    if(turn === 'player1') {
+    if (turn === 'player1') {
       slots[col6AvailableSlot].classList.add('player1');
-    } else if(turn === 'player2') {
+    } else if (turn === 'player2') {
       slots[col6AvailableSlot].classList.add('player2');
     }
     col6AvailableSlot -= 7;
@@ -177,9 +188,9 @@ function init() {
   }
 
   function col7Move() {
-    if(turn === 'player1') {
+    if (turn === 'player1') {
       slots[col7AvailableSlot].classList.add('player1');
-    } else if(turn === 'player2') {
+    } else if (turn === 'player2') {
       slots[col7AvailableSlot].classList.add('player2');
     }
     col7AvailableSlot -= 7;
@@ -187,9 +198,9 @@ function init() {
   }
 
   function changeTurn() {
-    if(turn === 'player1') {
+    if (turn === 'player1') {
       turn = 'player2';
-    } else if(turn === 'player2') {
+    } else if (turn === 'player2') {
       turn = 'player1';
     }
   }
