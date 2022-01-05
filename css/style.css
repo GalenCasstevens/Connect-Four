@@ -1,13 +1,14 @@
 body {
   background: #000;
 }
+
 div#boardContainer {
   width: 100%;
   height: 100%;
   margin-top: 40px;
 }
 
-table {
+table#board {
   background-color: #0000FF;
   margin: auto;
   text-align: center;

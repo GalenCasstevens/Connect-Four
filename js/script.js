@@ -19,7 +19,7 @@ var turn;
 
 window.onload = init;
 
-function init() {
+let init = () => {
   boardArray = [
     [0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0],
@@ -109,6 +109,22 @@ function init() {
       }
     }
   */
+
+  let startGame = () => {
+    for (var i = 0, slot; slot = board.cells[i]; i++) {
+      //iterate through slots
+      //slots would be accessed using the "slot" variable assigned in the for loop
+      var column = slot.className;
+      slot.onclick = () => move(column)
+    }
+  };
+
+  let move = (column) => {
+    if (turn === 'player1') {
+      
+    }
+  }
+
   function move(column) {
     if (column === 'col1' && col1AvailableSlot >= 0) {
       col1Move();
@@ -204,4 +220,4 @@ function init() {
       turn = 'player1';
     }
   }
-}
+};
