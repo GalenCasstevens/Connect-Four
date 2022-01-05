@@ -16,8 +16,7 @@ var col6AvailableSlot;
 var col7;
 var col7AvailableSlot;
 var turn;
-
-window.onload = init;
+const NUM_BOARD_ROWS = 6;
 
 let init = () => {
   boardArray = [
@@ -45,21 +44,6 @@ let init = () => {
   col6AvailableSlot = 40;
   col7AvailableSlot = 41;
   turn = 'player1';
-
-  for (var i = 0, slot; slot = board.cells[i]; i++) {
-    //iterate through slots
-    //slots would be accessed using the "slot" variable assigned in the for loop
-    var slotClass = slot.className;
-
-    switch (slotClass) {
-      case 'col1':
-        slot.onclick = () => move(slot);
-        break;
-      case 'col2':
-        slot.onclick = () => move(slot);
-        break;
-    }
-  }
 
   for (var i = 0; i < col1.length; i++) {
     col1[i].onclick = function () {
@@ -111,23 +95,72 @@ let init = () => {
   */
 
   let startGame = () => {
-    for (var i = 0, slot; slot = board.cells[i]; i++) {
-      //iterate through slots
-      //slots would be accessed using the "slot" variable assigned in the for loop
+    for (let i = 0, slot; slot = board.cells[i]; i++) {
+      // iterate through slots
+      // slots would be accessed using the "slot" variable assigned in the for loop
       var column = slot.className;
-      slot.onclick = () => move(column)
+      slot.onclick = () => move(column);
     }
+
+    for (var i = 0, row; row = board.rows[i]; i++) {
+      //iterate through rows
+      //rows would be accessed using the "row" variable assigned in the for loop
+      for (var j = 0, col; col = row.cells[j]; j++) {
+        //iterate through columns
+        //columns would be accessed using the "col" variable assigned in the for loop
+        var column = j + 1;
+        col.onclick = () => move(column);
+      }  
+   }
   };
 
   let move = (column) => {
-    if (turn === 'player1') {
-      
+    for (let rowIndex = 5; rowIndex >= 0; rowIndex--) {
+      // var slotIsAvailable = (boardArray[rowIndex][column] === 0);
+      if (boardArray[rowIndex][column] === 0 && turn === 'player1') {
+        boardArray[rowIndex][column] = 1;
+        drawBoard();
+        checkWinDrawCondition();
+        break;
+      }
     }
-  }
+
+    while (row < NUM_BOARD_ROWS) {
+      if (boardArray[row][column])
+    }
+  };
+
+  let drawBoard = () => {
+    for (let i = 0; i < boardArray.length; i++) {
+      var rowLength = boardArray[i].length;
+      for (let j = 0; j < rowLength; j++) {
+        boardCell.className = '';
+        boardCell.classList.add('slot');
+        switch (boardArray[i][j]) {
+          case 0:
+            boardCell.classList.add('empty');
+            break;
+          case 1:
+            boardCell.classList.add('player1');
+            break;
+          case 2:
+            boardCell.classList.add('player2');
+            break;
+          default:
+            console.log('Error occured!');
+        }
+      }
+    }
+  };
+
+  let checkWinDrawCondition = () => {
+
+  };
 
   function move(column) {
     if (column === 'col1' && col1AvailableSlot >= 0) {
       col1Move();
+
     } else if (column === 'col2' && col2AvailableSlot >= 1) {
       col2Move();
     } else if (column === 'col3' && col3AvailableSlot >= 2) {
@@ -221,3 +254,5 @@ let init = () => {
     }
   }
 };
+
+window.onload = init;
