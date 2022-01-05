@@ -44,12 +44,14 @@ let init = () => {
     for (let i = 0; i < boardArray.length; i++) {
       var rowLength = boardArray[i].length;
       for (let j = 0; j < rowLength; j++) {
+        var boardCell = board.rows[i].cells[j];
+        console.log(`boardCell: ${boardCell}`);
         boardCell.className = '';
         boardCell.classList.add('slot');
         switch (boardArray[i][j]) {
           case 0:
             boardCell.classList.add('empty');
-            break;s
+            break;
           case 1:
             boardCell.classList.add('player1');
             break;
