@@ -17,7 +17,7 @@ let init = () => {
 
   let startGame = () => {
     $('#playerOneWins').hide();
-    $('playerTwoWins').hide();
+    $('#playerTwoWins').hide();
     for (var i = 0, row; row = board.rows[i]; i++) {
       for (var j = 0, col; col = row.cells[j]; j++) {
         let columnIndex = j;
@@ -102,7 +102,7 @@ let init = () => {
         if (boardArray[i][j] == 1) {
           if ((j - 3) >= MIN_COLUMN_INDEX) {
             if (boardArray[i][j - 1] == 1 && boardArray[i][j - 2] == 1 && boardArray[i][j - 3] === 1) {
-
+              $('#playerOneWins').show();
             }
           }
         } else if (boardArray[i][j] == 2) {
