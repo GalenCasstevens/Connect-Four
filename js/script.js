@@ -10,9 +10,9 @@ let init = () => {
     [0, 0, 0, 0, 0, 0, 0]
   ];
   const MIN_ROW_INDEX = 0,
-        MAX_ROW_INDEX = 5,
-        MIN_COLUMN_INDEX = 0,
-        MAX_COLUMN_INDEX = 6;
+    MAX_ROW_INDEX = 5,
+    MIN_COLUMN_INDEX = 0,
+    MAX_COLUMN_INDEX = 6;
   var turn = 'player1';
 
   let startGame = () => {
@@ -97,21 +97,64 @@ let init = () => {
   };
 
   let checkWinDrawCondition = () => {
+    var emptySlotExists = false;
     for (let i = 0; i < boardArray.length; i++) {
       for (let j = 0; j < boardArray[i].length; j++) {
+        if (board[i][j] == 0) emptySlotExists = true;
         if (boardArray[i][j] == 1) {
           if ((j - 3) >= MIN_COLUMN_INDEX) {
             if (boardArray[i][j - 1] == 1 && boardArray[i][j - 2] == 1 && boardArray[i][j - 3] === 1) {
               $('#playerOneWins').show();
+              return;
+            }
+          }
+          if ((j + 3) <= MAX_COLUMN_INDEX) {
+            if (boardArray[i][j + 1] == 1 && boardArray[i][j + 2] == 1 && boardArray[i][j + 3] === 1) {
+              $('#playerOneWins').show();
+              return;
+            }
+          }
+          if ((j - 3) >= MIN_COLUMN_INDEX && ((i - 3) >= MIN_ROW_INDEX)) {
+            if (boardArray[i - 1][j - 1] == 1 && boardArray[i - 2][j - 2] == 1 && boardArray[i - 3][j - 3] === 1) {
+              $('#playerOneWins').show();
+              return;
+            }
+          }
+          if ((j + 3) <= MAX_COLUMN_INDEX && ((i + 3) <= MAX_ROW_INDEX)) {
+            if (boardArray[i + 1][j + 1] == 1 && boardArray[i + 2][j + 2] == 1 && boardArray[i + 3][j + 3] === 1) {
+              $('#playerOneWins').show();
+              return;
             }
           }
         } else if (boardArray[i][j] == 2) {
           if ((j - 3) >= MIN_COLUMN_INDEX) {
-            
+            if (boardArray[i][j - 1] == 2 && boardArray[i][j - 2] == 2 && boardArray[i][j - 3] === 2) {
+              $('#playerTwoWins').show();
+              return;
+            }
+          }
+          if ((j + 3) <= MAX_COLUMN_INDEX) {
+            if (boardArray[i][j + 1] == 2 && boardArray[i][j + 2] == 2 && boardArray[i][j + 3] === 2) {
+              $('#playerTwoWins').show();
+              return;
+            }
+          }
+          if ((j - 3) >= MIN_COLUMN_INDEX && ((i - 3) >= MIN_ROW_INDEX)) {
+            if (boardArray[i - 1][j - 1] == 2 && boardArray[i - 2][j - 2] == 2 && boardArray[i - 3][j - 3] === 2) {
+              $('#playerTwoWins').show();
+              return;
+            }
+          }
+          if ((j + 3) <= MAX_COLUMN_INDEX && ((i + 3) <= MAX_ROW_INDEX)) {
+            if (boardArray[i + 1][j + 1] == 2 && boardArray[i + 2][j + 2] == 2 && boardArray[i + 3][j + 3] === 2) {
+              $('#playerTwoWins').show();
+              return;
+            }
           }
         }
       }
     }
+    if (emptySlotExists == false) 
   };
 
   startGame();
