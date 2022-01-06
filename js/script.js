@@ -13,38 +13,58 @@ let init = () => {
 
   let startGame = () => {
     for (var i = 0, row; row = board.rows[i]; i++) {
-      //iterate through rows
-      //rows would be accessed using the "row" variable assigned in the for loop
       for (var j = 0, col; col = row.cells[j]; j++) {
-        //iterate through columns
-        //columns would be accessed using the "col" variable assigned in the for loop
-        var column = j + 1;
-        col.onclick = () => move(column);
-      }  
-   }
+        let columnIndex = j;
+        switch (columnIndex) {
+          case 0:
+            col.onclick = () => move(columnIndex);
+            break;
+          case 1:
+            col.onclick = () => move(columnIndex);
+            break;
+          case 2:
+            col.onclick = () => move(columnIndex);
+            break;
+          case 3:
+            col.onclick = () => move(columnIndex);
+            break;
+          case 4:
+            col.onclick = () => move(columnIndex);
+            break;
+          case 5:
+            col.onclick = () => move(columnIndex);
+            break;
+          case 6:
+            col.onclick = () => move(columnIndex);
+            break;
+        }
+      }
+    }
   };
 
   let move = (column) => {
     for (let rowIndex = 5; rowIndex >= 0; rowIndex--) {
-      // var slotIsAvailable = (boardArray[rowIndex][column] === 0);
       if (boardArray[rowIndex][column] === 0 && turn === 'player1') {
         boardArray[rowIndex][column] = 1;
+        changeTurn();
+        drawBoard();
+        checkWinDrawCondition();
         break;
       } else if (boardArray[rowIndex][column] === 0 && turn === 'player2') {
         boardArray[rowIndex][column] = 2;
+        changeTurn();
+        drawBoard();
+        checkWinDrawCondition();
         break;
       }
     }
-    drawBoard();
-    checkWinDrawCondition();
-    changeTurn();
   };
 
   let drawBoard = () => {
     for (let i = 0; i < boardArray.length; i++) {
       var rowLength = boardArray[i].length;
       for (let j = 0; j < rowLength; j++) {
-        var boardCell = board.rows[i].cells[j];
+        var boardCell = board.rows[i].cells[j].children[0];
         console.log(`boardCell: ${boardCell}`);
         boardCell.className = '';
         boardCell.classList.add('slot');
@@ -71,7 +91,11 @@ let init = () => {
   };
 
   let checkWinDrawCondition = () => {
-
+    for (let i = 0; i < boardArray.length; i++) {
+      for (let j = 0; j < boardArray[i].length; j++) {
+        if ()
+      }
+    }
   };
 
   startGame();
