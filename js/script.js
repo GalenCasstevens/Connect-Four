@@ -16,6 +16,8 @@ let init = () => {
   var turn = 'player1';
 
   let startGame = () => {
+    $('#playerOneWins').hide();
+    $('playerTwoWins').hide();
     for (var i = 0, row; row = board.rows[i]; i++) {
       for (var j = 0, col; col = row.cells[j]; j++) {
         let columnIndex = j;
@@ -99,7 +101,9 @@ let init = () => {
       for (let j = 0; j < boardArray[i].length; j++) {
         if (boardArray[i][j] == 1) {
           if ((j - 3) >= MIN_COLUMN_INDEX) {
-            if ()
+            if (boardArray[i][j - 1] == 1 && boardArray[i][j - 2] == 1 && boardArray[i][j - 3] === 1) {
+
+            }
           }
         } else if (boardArray[i][j] == 2) {
           if ((j - 3) >= MIN_COLUMN_INDEX) {
@@ -109,8 +113,6 @@ let init = () => {
       }
     }
   };
-
-
 
   startGame();
 };
