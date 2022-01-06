@@ -9,6 +9,10 @@ let init = () => {
     [0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0]
   ];
+  const MIN_ROW_INDEX = 0,
+        MAX_ROW_INDEX = 5,
+        MIN_COLUMN_INDEX = 0,
+        MAX_COLUMN_INDEX = 6;
   var turn = 'player1';
 
   let startGame = () => {
@@ -93,10 +97,20 @@ let init = () => {
   let checkWinDrawCondition = () => {
     for (let i = 0; i < boardArray.length; i++) {
       for (let j = 0; j < boardArray[i].length; j++) {
-        if ()
+        if (boardArray[i][j] == 1) {
+          if ((j - 3) >= MIN_COLUMN_INDEX) {
+            if ()
+          }
+        } else if (boardArray[i][j] == 2) {
+          if ((j - 3) >= MIN_COLUMN_INDEX) {
+            
+          }
+        }
       }
     }
   };
+
+
 
   startGame();
 };
